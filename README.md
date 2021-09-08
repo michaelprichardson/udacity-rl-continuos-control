@@ -1,7 +1,7 @@
 [//]: # (Image References)
 
-[image1]: https://github.com/michaelprichardson/udacity-rl-navigation/blob/master/assets/udacity_gif.gif "Trained Agent (Credit Udacity)"
-# Udacity Deep RL Project 2: Continuous COntrol
+[image1]: https://github.com/michaelprichardson/udacity-rl-continuos-control/blob/master/assets/udacity_gif.gif "Trained Agent (Credit Udacity)"
+# Udacity Deep RL Project 2: Continuous Control
 
 For this project, you will train an agent to navigate (and collect bananas!) in a large, square world.  
 
