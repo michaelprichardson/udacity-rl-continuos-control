@@ -12,7 +12,7 @@ def hidden_init(layer):
 class Actor(nn.Module):
     """Actor (Policy) Model."""
 
-    def __init__(self, state_size, action_size, seed, fc1_units=128, fc2_units=128):
+    def __init__(self, state_size, action_size, seed, fc1_units=128, fc2_units=128, use_dropout=False):
         """Initialize parameters and build model.
         Params
         ======
@@ -38,13 +38,18 @@ class Actor(nn.Module):
         """Build an actor (policy) network that maps states -> actions."""
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
+
+        # Add dropout layer
+        if self.use_dropout:
+            x = F.dropout(x, 0.5)
+
         return F.tanh(self.fc3(x))
 
 
 class Critic(nn.Module):
     """Critic (Value) Model."""
 
-    def __init__(self, state_size, action_size, seed, fcs1_units=128, fc2_units=128):
+    def __init__(self, state_size, action_size, seed, fcs1_units=128, fc2_units=128, use_dropout=False):
         """Initialize parameters and build model.
         Params
         ======
@@ -71,4 +76,9 @@ class Critic(nn.Module):
         xs = F.relu(self.fcs1(state))
         x = torch.cat((xs, action), dim=1)
         x = F.relu(self.fc2(x))
+        
+        # Add dropout layer
+        if self.use_dropout:
+            x = F.dropout(x, 0.5)
+
         return self.fc3(x)
