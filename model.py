@@ -27,6 +27,7 @@ class Actor(nn.Module):
         self.fc1 = nn.Linear(state_size, fc1_units)
         self.fc2 = nn.Linear(fc1_units, fc2_units)
         self.fc3 = nn.Linear(fc2_units, action_size)
+        self.use_dropout = use_dropout
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -64,6 +65,7 @@ class Critic(nn.Module):
         self.fcs1 = nn.Linear(state_size, fcs1_units)
         self.fc2 = nn.Linear(fcs1_units+action_size, fc2_units)
         self.fc3 = nn.Linear(fc2_units, 1)
+        self.use_dropout = use_dropout
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -76,7 +78,7 @@ class Critic(nn.Module):
         xs = F.relu(self.fcs1(state))
         x = torch.cat((xs, action), dim=1)
         x = F.relu(self.fc2(x))
-        
+
         # Add dropout layer
         if self.use_dropout:
             x = F.dropout(x, 0.5)
