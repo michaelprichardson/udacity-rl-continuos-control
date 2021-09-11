@@ -1,8 +1,5 @@
 # Udacity Deep RL Project 2 Report: Continuous Control
 
-![runs](./assets/agent-final.gif)
-GIF of the best performing agent
-
 ### Goal
 
 The goal of this assignment was to train multiple agents using neural networks. The task is considered solved when a score of 30 or more is achieved over 100 consecutive episodes over all agents.
@@ -70,7 +67,12 @@ The next image is the plots for each of the configurations.
 
 ### Conclusion
 
-The more nodes that were added, the faster the agent solved the environment. Adding a dropout layer had no real affect on the results and the agent often performed slightly better with no dropout layer. The best agent was DDPG with 256 ndoes
+The more nodes that were added, the faster the agent solved the environment. Adding a dropout layer had no real affect on the results and the agent often performed slightly better with no dropout layer. The best agent was DDPG with 256 nodes.
+
+![runs](./assets/agent-final.gif)
+GIF of the best performing agent
+
+As can be seen from the GIF above, the agent doesn't really perform the task well even though it has all the requirements. Some further investigation will be needed to get it to perform better.
 
 ### Future Improvements
 
